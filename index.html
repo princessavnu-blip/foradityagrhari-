@@ -23,11 +23,13 @@
 
     /* Floating hearts background */
     .heart {
-      position: fixed;
-      bottom: -20px;
-      font-size: 24px;
-      animation: floatUp 8s linear infinite;
-      opacity: 0.6;
+  position: fixed;
+  bottom: -30px;
+  font-size: 28px;
+  animation: floatUp 8s linear infinite;
+  opacity: 0.8;
+  z-index: 0;          /* 👈 VERY IMPORTANT */
+  pointer-events: none;
     }
 
     @keyframes floatUp {
