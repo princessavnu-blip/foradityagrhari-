@@ -1,120 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>foradityagrhari</title>
+<meta charset="UTF-8">
+<title>foradityagrhari</title>
 
-  <!-- Atelier Femme Font -->
-  <link href="https://fonts.cdnfonts.com/css/atelier-femme" rel="stylesheet">
+<!-- Playfair Display Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      background: linear-gradient(to right, #ff758c, #ff7eb3);
-      min-height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Atelier Femme', cursive;
-      text-align: center;
-      color: white;
-      overflow: hidden;
-      padding: 20px;
-    }
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  font-family: 'Playfair Display', serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  padding: 16px;
+}
 
-    /* Floating hearts background */
-    .heart {
-  position: fixed;
-  bottom: -30px;
-  font-size: 28px;
-  animation: floatUp 8s linear infinite;
-  opacity: 0.8;
-  z-index: 0;          /* 👈 VERY IMPORTANT */
+/* Floating hearts */
+.heart {
+  position: absolute;
+  bottom: -40px;
+  font-size: 22px;
+  opacity: 0.7;
+  animation: floatUp linear forwards;
+  z-index: 0;
   pointer-events: none;
-    }
+}
 
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0);
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(-110vh);
-        opacity: 0;
-      }
-    }
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
 
-    .box {
-      background: rgba(255,255,255,0.25);
-      padding: 40px;
-      border-radius: 30px;
-      max-width: 95%;
-      z-index: 2;
-    }
+/* Main box */
+.box {
+  background: rgba(255,255,255,0.25);
+  padding: 28px;
+  border-radius: 24px;
+  max-width: 100%;
+  z-index: 2;
+}
 
-    h2 {
-      font-size: 3rem;
-    }
+h2 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
 
-    button {
-      font-size: 2.2rem;
-      padding: 18px 32px;
-      border-radius: 30px;
-      border: none;
-      margin: 15px;
-      cursor: pointer;
-    }
+button {
+  font-size: 1.6rem;
+  padding: 14px 24px;
+  border-radius: 28px;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+}
 
-    .gif img {
-      width: 190px;
-      height: 190px;
-      margin-top: 20px;
-      border-radius: 20px;
-      object-fit: cover;
-    }
+/* GIF */
+.gif img {
+  width: 180px;
+  height: 180px;
+  margin-top: 20px;
+  border-radius: 20px;
+  object-fit: cover;
+}
 
-    .final-text {
-      font-size: 2.5rem;
-      line-height: 1.4;
-    }
+/* Final text */
+.final-text {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
 
-    .photos {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+/* Photos */
+.photos {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
 
-    .photos img {
-      width: 190px;
-      height: 190px;
-      border-radius: 20px;
-      object-fit: cover;
-    }
-
-    /* Heart burst animation */
-    .burst {
-      position: fixed;
-      font-size: 28px;
-      animation: burst 1.5s ease-out forwards;
-      pointer-events: none;
-    }
-
-    @keyframes burst {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100px) scale(1.8);
-        opacity: 0;
-      }
-    }
-  </style>
+.photos img {
+  width: 180px;
+  height: 180px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+</style>
 </head>
 
 <body>
 
+<!-- AUDIO -->
 <audio id="song1" loop>
   <source src="kabootar.mp3" type="audio/mpeg">
 </audio>
@@ -130,87 +118,71 @@
   <button onclick="no()">NO 😡 (sochna bhi mat)</button>
 
   <div class="gif">
-    <img src="kiss.gif" alt="kiss gif">
+    <img src="kiss.gif" alt="kissing bears gif">
   </div>
 </div>
 
 <script>
-  function no() {
-    alert("Try again 😌");
-  }
+/* NO button */
+function no() {
+  alert("Try again 😌");
+}
 
-  function yes() {
-    const song1 = document.getElementById("song1");
-    const song2 = document.getElementById("song2");
+/* YES button */
+function yes() {
+  const song1 = document.getElementById("song1");
+  const song2 = document.getElementById("song2");
 
-    song1.pause();
-    song1.currentTime = 0;
+  song1.pause();
+  song1.currentTime = 0;
 
-    song2.currentTime = 0;
-    song2.play();
+  song2.currentTime = 0;
+  song2.play();
 
-    heartBurst();
+  document.getElementById("content").innerHTML = `
+    <div class="final-text">
+      Adi, I love you 💖<br><br>
 
-    document.getElementById("content").innerHTML = `
-      <div class="final-text">
-        Adi, I love you 💖<br><br>
+      Thank you for coming in my life and making it so beautiful.<br><br>
 
-        Thank you for coming in my life and making it so beautiful.<br><br>
+      I want to spend every second of my life with you.<br><br>
 
-        I want to spend every second of my life with you.<br><br>
+      Jaldi milte hai cutu 🥺<br><br>
 
-        Jaldi milte hai cutu 🥺<br><br>
+      Tumhe nahi pata tum kitne important ho mere liye.
+      Your presence has made me start loving myself more.
+      Tumhari smile, tumhari eyes — overall mujhe tum poore ke poore hi bahut pasand ho.
+      I am so proud of you baby for the hard work you do and the way you care for everyone.
+      I am the luckiest in the world Aditya.
+      Thank you for being YOU.<br><br>
 
-        Tumhe nahi pata tum kitne important ho mere liye.
-        Your presence has made me start loving myself more.
-        Tumhari smile, tumhari eyes — overall mujhe tum poore ke poore hi bahut pasand ho.
-        I am so proud of you baby for the hard work you do and the way you care for everyone.
-        I am the luckiest in the world, Aditya.
-        Thank you for being YOU.<br><br>
+      HAPPY FIRST VALENTINE'S DAY MY LOVEE 💕😘🧿🫂
+    </div>
 
-        HAPPY FIRST VALENTINE'S DAY MY LOVEE 💕😘🧿🫂
-      </div>
+    <div class="photos">
+      <img src="us1.jpg">
+      <img src="us2.jpg">
+    </div>
+  `;
+}
 
-      <div class="photos">
-        <img src="us1.jpg">
-        <img src="us2.jpg">
-      </div>
-    `;
-  }
+/* Mobile autoplay unlock */
+document.body.addEventListener("click", () => {
+  const s = document.getElementById("song1");
+  if (s.paused) s.play();
+}, { once: true });
 
-  // Mobile autoplay fix
-  document.body.addEventListener('click', function () {
-    const music = document.getElementById('song1');
-    if (music.paused) {
-      music.play();
-    }
-  }, { once: true });
+/* Floating hearts generator */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (6 + Math.random() * 4) + "s";
+  document.body.appendChild(heart);
 
-  // Floating hearts generator
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💗";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 8000);
-  }, 400);
-
-  // Heart burst on YES
-  function heartBurst() {
-    for (let i = 0; i < 12; i++) {
-      const heart = document.createElement("div");
-      heart.className = "burst";
-      heart.innerHTML = "💖";
-      heart.style.left = (50 + Math.random() * 20 - 10) + "vw";
-      heart.style.top = "50vh";
-      document.body.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 1500);
-    }
-  }
+  setTimeout(() => heart.remove(), 10000);
+}, 500);
 </script>
 
 </body>
