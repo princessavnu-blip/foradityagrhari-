@@ -33,8 +33,9 @@ button {
 
 <body>
 
-<audio id="song1" autoplay loop>
-  <source src="kabootar.mp3">
+<audio id="song1" loop>
+  <source src="kabootar.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
 </audio>
 
 <audio id="song2">
@@ -61,6 +62,13 @@ function yes() {
   "Adi, I love you 💖<br><br>Thank you for coming in my life and making it so beautiful.<br><br>I want to spend every second of my life with you.<br><br>Jaldi milte hai cutu 🥺<br><br>Happy Valentine 💘";
 }
 </script>
-
+<script>
+  document.body.addEventListener('click', function () {
+    const music = document.getElementById('song1');
+    if (music.paused) {
+      music.play();
+    }
+  }, { once: true });
+</script>
 </body>
 </html>
