@@ -3,26 +3,50 @@
 <head>
   <title>foradityagrhari</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <!-- Atelier Femme Font -->
+  <link href="https://fonts.cdnfonts.com/css/atelier-femme" rel="stylesheet">
 
   <style>
     body {
       background: linear-gradient(to right, #ff758c, #ff7eb3);
       min-height: 100vh;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Pacifico', cursive;
+      font-family: 'Atelier Femme', cursive;
       text-align: center;
       color: white;
+      overflow: hidden;
       padding: 20px;
     }
 
+    /* Floating hearts background */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+
     .box {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.25);
       padding: 40px;
-      border-radius: 25px;
+      border-radius: 30px;
       max-width: 95%;
+      z-index: 2;
     }
 
     h2 {
@@ -31,26 +55,23 @@
 
     button {
       font-size: 2.2rem;
-      padding: 18px 30px;
+      padding: 18px 32px;
       border-radius: 30px;
       border: none;
       margin: 15px;
       cursor: pointer;
     }
 
-    .gif {
-      margin-top: 20px;
-    }
-
     .gif img {
       width: 190px;
       height: 190px;
-      object-fit: cover;
+      margin-top: 20px;
       border-radius: 20px;
+      object-fit: cover;
     }
 
     .final-text {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       line-height: 1.4;
     }
 
@@ -65,8 +86,27 @@
     .photos img {
       width: 190px;
       height: 190px;
-      object-fit: cover;
       border-radius: 20px;
+      object-fit: cover;
+    }
+
+    /* Heart burst animation */
+    .burst {
+      position: fixed;
+      font-size: 28px;
+      animation: burst 1.5s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes burst {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) scale(1.8);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -82,16 +122,14 @@
 </audio>
 
 <div class="box" id="content">
-
   <h2>Mr. Aditya Agrahari,<br>will you be my Valentine? 💖</h2>
 
   <button onclick="yes()">🥺 YES</button>
   <button onclick="no()">NO 😡 (sochna bhi mat)</button>
 
   <div class="gif">
-    <img src="kiss.gif" alt="cute kiss gif">
+    <img src="kiss.gif" alt="kiss gif">
   </div>
-
 </div>
 
 <script>
@@ -100,8 +138,16 @@
   }
 
   function yes() {
-    document.getElementById("song1").pause();
-    document.getElementById("song2").play();
+    const song1 = document.getElementById("song1");
+    const song2 = document.getElementById("song2");
+
+    song1.pause();
+    song1.currentTime = 0;
+
+    song2.currentTime = 0;
+    song2.play();
+
+    heartBurst();
 
     document.getElementById("content").innerHTML = `
       <div class="final-text">
@@ -124,8 +170,8 @@
       </div>
 
       <div class="photos">
-        <img src="us1.jpg" alt="us photo 1">
-        <img src="us2.jpg" alt="us photo 2">
+        <img src="us1.jpg">
+        <img src="us2.jpg">
       </div>
     `;
   }
@@ -137,6 +183,32 @@
       music.play();
     }
   }, { once: true });
+
+  // Floating hearts generator
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 8000);
+  }, 400);
+
+  // Heart burst on YES
+  function heartBurst() {
+    for (let i = 0; i < 12; i++) {
+      const heart = document.createElement("div");
+      heart.className = "burst";
+      heart.innerHTML = "💖";
+      heart.style.left = (50 + Math.random() * 20 - 10) + "vw";
+      heart.style.top = "50vh";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 1500);
+    }
+  }
 </script>
 
 </body>
