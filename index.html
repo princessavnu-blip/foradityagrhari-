@@ -1,123 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>foradityagrhari</title>
+  <title>foradityagrhari</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-<style>
-body {
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
-  height: 100vh;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Pacifico', cursive;
-  text-align: center;
-  color: white;
-}
+  <style>
+    body {
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
 
-.box {
-  background: rgba(255,255,255,0.2);
-  padding: 25px;
-  border-radius: 20px;
-  max-width: 90%;
-}
+    .box {
+      background: rgba(255,255,255,0.2);
+      padding: 40px;
+      border-radius: 25px;
+      max-width: 95%;
+    }
 
-button {
-  font-size: 18px;
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
-  margin: 10px;
-  cursor: pointer;
-  transition: 0.2s;
-}
+    h2 {
+      font-size: 3rem;
+    }
 
-button:hover {
-  transform: scale(1.1);
-}
+    button {
+      font-size: 2.2rem;
+      padding: 18px 30px;
+      border-radius: 30px;
+      border: none;
+      margin: 15px;
+      cursor: pointer;
+    }
 
-.yes {
-  background-color: #ff4d6d;
-  color: white;
-}
+    .gif {
+      margin-top: 20px;
+    }
 
-.no {
-  background-color: #555;
-  color: white;
-}
+    .gif img {
+      width: 190px;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
 
-img {
-  max-width: 100%;
-  border-radius: 15px;
-  margin: 10px 0;
-}
-</style>
+    .final-text {
+      font-size: 2.4rem;
+      line-height: 1.4;
+    }
+
+    .photos {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .photos img {
+      width: 190px;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- First song -->
 <audio id="song1" loop>
   <source src="kabootar.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
 </audio>
 
-<!-- Second song -->
-<audio id="song2">
+<audio id="song2" loop>
   <source src="humara_ho_gaya.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
 </audio>
 
 <div class="box" id="content">
+
   <h2>Mr. Aditya Agrahari,<br>will you be my Valentine? 💖</h2>
 
-  <button class="yes" onclick="yes()">🥺 YES</button>
-  <button class="no" onclick="no()">NO 😡 (sochna bhi mat)</button>
+  <button onclick="yes()">🥺 YES</button>
+  <button onclick="no()">NO 😡 (sochna bhi mat)</button>
 
-  <!-- GIF below buttons -->
-  <img src="kiss.gif" alt="Kissing bears GIF">
+  <div class="gif">
+    <img src="kiss.gif" alt="cute kiss gif">
+  </div>
+
 </div>
 
 <script>
-function no() {
-  alert("Try again 😌");
-}
-
-function yes() {
-  // Stop first song, play second
-  document.getElementById("song1").pause();
-  document.getElementById("song2").play();
-
-  // Replace content with longer message, GIF, and two pictures
-  document.getElementById("content").innerHTML = `
-    <h2>Adi, I love you 💖</h2>
-    <p>Thank you for coming in my life and making it so beautiful.<br>
-    I want to spend every second of my life with you.<br>
-    Jaldi milte hai cutu 🥺<br><br>
-    Tumhe nahi pata tum kitne important ho mere liye.<br>
-    Your presence has made me start loving myself more.<br>
-    Tumhari smile, tumhari eyes, overall mujhe tum poore ke poore hi bahut pasand ho.<br>
-    I am so proud of you baby for the hard work you do and the way you care for everyone.<br>
-    I am the luckiest in the world Aditya. Thank you for being YOU.<br>
-    HAPPY FIRST VALENTINE'S DAY MY LOVEE 💕😘🧿🫂</p>
-    
-    <img src="us1.jpg" alt="Us Picture 1">
-    <img src="us2.jpg" alt="Us Picture 2">
-  `;
-}
-</script>
-
-<!-- Play first song on first tap -->
-<script>
-document.body.addEventListener('click', function () {
-  const music = document.getElementById('song1');
-  if (music.paused) {
-    music.play();
+  function no() {
+    alert("Try again 😌");
   }
-}, { once: true });
+
+  function yes() {
+    document.getElementById("song1").pause();
+    document.getElementById("song2").play();
+
+    document.getElementById("content").innerHTML = `
+      <div class="final-text">
+        Adi, I love you 💖<br><br>
+
+        Thank you for coming in my life and making it so beautiful.<br><br>
+
+        I want to spend every second of my life with you.<br><br>
+
+        Jaldi milte hai cutu 🥺<br><br>
+
+        Tumhe nahi pata tum kitne important ho mere liye.
+        Your presence has made me start loving myself more.
+        Tumhari smile, tumhari eyes — overall mujhe tum poore ke poore hi bahut pasand ho.
+        I am so proud of you baby for the hard work you do and the way you care for everyone.
+        I am the luckiest in the world, Aditya.
+        Thank you for being YOU.<br><br>
+
+        HAPPY FIRST VALENTINE'S DAY MY LOVEE 💕😘🧿🫂
+      </div>
+
+      <div class="photos">
+        <img src="us1.jpg" alt="us photo 1">
+        <img src="us2.jpg" alt="us photo 2">
+      </div>
+    `;
+  }
+
+  // Mobile autoplay fix
+  document.body.addEventListener('click', function () {
+    const music = document.getElementById('song1');
+    if (music.paused) {
+      music.play();
+    }
+  }, { once: true });
 </script>
 
 </body>
