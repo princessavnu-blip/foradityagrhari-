@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>foradityagrhari</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+body {
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  color: white;
+}
+.box {
+  background: rgba(255,255,255,0.2);
+  padding: 30px;
+  border-radius: 20px;
+}
+button {
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  margin: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="song1" autoplay loop>
+  <source src="kabootar.mp3">
+</audio>
+
+<audio id="song2">
+  <source src="humara_ho_gaya.mp3">
+</audio>
+
+<div class="box" id="content">
+  <h2>Mr. Aditya Agrahari,<br>will you be my Valentine? 💖</h2>
+
+  <button onclick="yes()">🥺 YES</button>
+  <button onclick="no()">NO 😡 (sochna bhi mat)</button>
+</div>
+
+<script>
+function no() {
+  alert("Try again 😌");
+}
+
+function yes() {
+  document.getElementById("song1").pause();
+  document.getElementById("song2").play();
+
+  document.getElementById("content").innerHTML =
+  "Adi, I love you 💖<br><br>Thank you for coming in my life and making it so beautiful.<br><br>I want to spend every second of my life with you.<br><br>Jaldi milte hai cutu 🥺<br><br>Happy Valentine 💘";
+}
+</script>
+
+</body>
+</html>
